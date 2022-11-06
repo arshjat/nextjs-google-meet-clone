@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useConnectionManagerContext } from "@core/connectionManager/contexts";
 
 //types
-import { COMMUNICATION_MANAGER_EVENTS } from "@core/connectionManager/types";
+import { CONNECTION_MANAGER_EVENTS } from "@core/connectionManager/types";
 import {
   Participant,
   NewParticipantEvent,
@@ -36,21 +36,21 @@ export const useConnectionManager = (roomId: string) => {
     connectionManager.init(roomId);
 
     connectionManager.addEventListener(
-      COMMUNICATION_MANAGER_EVENTS.ADD_PARTICIPANT,
+      CONNECTION_MANAGER_EVENTS.ADD_PARTICIPANT,
       handleAddParticipant as EventListener
     );
     connectionManager.addEventListener(
-      COMMUNICATION_MANAGER_EVENTS.REMOVE_PARTICIPANT,
+      CONNECTION_MANAGER_EVENTS.REMOVE_PARTICIPANT,
       handleRemoveParticipant as EventListener
     );
 
     return () => {
       connectionManager.removeEventListener(
-        COMMUNICATION_MANAGER_EVENTS.ADD_PARTICIPANT,
+        CONNECTION_MANAGER_EVENTS.ADD_PARTICIPANT,
         handleAddParticipant as EventListener
       );
       connectionManager.removeEventListener(
-        COMMUNICATION_MANAGER_EVENTS.REMOVE_PARTICIPANT,
+        CONNECTION_MANAGER_EVENTS.REMOVE_PARTICIPANT,
         handleRemoveParticipant as EventListener
       );
 

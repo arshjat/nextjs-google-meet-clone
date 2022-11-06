@@ -32,6 +32,7 @@ export const Participant = (props: Props) => {
         playsInline
         style={{ transform: "rotateY(180deg)" }}
         ref={videoElRef as any}
+        muted // to remove
       />
       <div className="absolute bottom-1 right-2 text-zinc-400">{name}</div>
     </div>

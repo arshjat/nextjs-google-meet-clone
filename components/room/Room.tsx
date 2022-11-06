@@ -13,7 +13,7 @@ const Room = ({ roomId }: RoomProps) => {
   const { participants, onAction } = useConnectionManager(roomId);
 
   return (
-    <ControlsContainer>
+    <ControlsContainer onAction={onAction}>
       <ParticipantsGrid participants={participants} onAction={onAction} />
     </ControlsContainer>
   );

@@ -3,7 +3,7 @@ import io, { Socket } from "socket.io-client";
 //types
 import {
   SocketEvent,
-  COMMUNICATION_MANAGER_EVENTS,
+  CONNECTION_MANAGER_EVENTS,
   INCOMING_SOCKET_EVENTS,
   OUTGOING_SOCKET_EVENTS,
   WEB_RTC_EVENTS,
@@ -137,7 +137,7 @@ export class ConnectionManager extends EventTarget {
 
       const localStream = this._localStream;
 
-      this._emitEventToUI(COMMUNICATION_MANAGER_EVENTS.ADD_PARTICIPANT, {
+      this._emitEventToUI(CONNECTION_MANAGER_EVENTS.ADD_PARTICIPANT, {
         participant: {
           id: socketId,
           name: "Admin",
@@ -151,7 +151,7 @@ export class ConnectionManager extends EventTarget {
       (socketId: string, existingClients: Array<string>) => {
         const localStream = this._localStream;
 
-        this._emitEventToUI(COMMUNICATION_MANAGER_EVENTS.ADD_PARTICIPANT, {
+        this._emitEventToUI(CONNECTION_MANAGER_EVENTS.ADD_PARTICIPANT, {
           participant: {
             id: socketId,
             name: "Admin",
@@ -214,7 +214,7 @@ export class ConnectionManager extends EventTarget {
       delete this._peers[socketId];
       delete this._remoteStreams[socketId];
 
-      this._emitEventToUI(COMMUNICATION_MANAGER_EVENTS.REMOVE_PARTICIPANT, {
+      this._emitEventToUI(CONNECTION_MANAGER_EVENTS.REMOVE_PARTICIPANT, {
         participantId: socketId,
       });
     });
@@ -284,7 +284,7 @@ export class ConnectionManager extends EventTarget {
         this._localStream?.id !== event.streams[0].id
       ) {
         this._remoteStreams[socketId] = event.streams[0];
-        this._emitEventToUI(COMMUNICATION_MANAGER_EVENTS.ADD_PARTICIPANT, {
+        this._emitEventToUI(CONNECTION_MANAGER_EVENTS.ADD_PARTICIPANT, {
           participant: {
             id: socketId,
             name: `Guest: ${socketId}`,
