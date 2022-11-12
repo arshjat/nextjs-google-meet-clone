@@ -7,7 +7,9 @@ Ref: https://ngrok.com/docs/getting-started
 
 ```
   git clone https://github.com/arshjat/google-meet-clone-server.git
-  npm i  --registry=https://registry.npmjs.org/ && npm i  --registry=https://registry.npmjs.org/  --only=dev
+  cd google-meet-clone-server
+  npm i  --registry=https://registry.npmjs.org/ && npm i  -- registry=https://registry.npmjs.org/  --only=dev
+  node index.js
   
   open another terminal and execute this command
   ngrok http 8081
@@ -17,6 +19,9 @@ once ngrok is setup, copy the URL and paste in 'client/components/room/config.ts
 
 ### Setup Client
 ```
+cd ..
+git clone https://github.com/arshjat/nextjs-google-meet-clone.git
+cd nextjs-google-meet-clone
 npm i  --registry=https://registry.npmjs.org/ && npm i  --registry=https://registry.npmjs.org/  --only=dev 
 
 npm run dev
