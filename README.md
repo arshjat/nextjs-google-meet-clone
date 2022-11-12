@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS Google Meet Clone
 
-## Getting Started
+## Setup signalling server
 
-First, run the development server:
+### Setup ngrok
+Ref: https://ngrok.com/docs/getting-started
 
-```bash
-npm run dev
-# or
-yarn dev
+```
+  git clone https://github.com/arshjat/google-meet-clone-server.git
+  npm i  --registry=https://registry.npmjs.org/ && npm i  --registry=https://registry.npmjs.org/  --only=dev
+  
+  open another terminal and execute this command
+  ngrok http 8081
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+once ngrok is setup, copy the URL and paste in 'client/components/room/config.ts' in SOCKET_URL param
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Setup Client
+```
+npm i  --registry=https://registry.npmjs.org/ && npm i  --registry=https://registry.npmjs.org/  --only=dev 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+npm run dev
+```
+go to localhost:3000 
+and the app will be running
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Open Issues
+- [ ] Sometimes the socket does not connect when opening localhost:3000 in that case, duplicate the tab and stream will be coming, close previous tab
+- [ ] Recording is saved for previous action, for eg lets say we start and stop recording call this sess1, then again do that and call that sess2, so the recording saved for sess2 will be what was recorded in sess1
+- [ ] when using getDisplayMedia, a popup is shown asking the user to share the screen, have to hide this using js and use tab for recording by default
