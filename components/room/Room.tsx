@@ -2,6 +2,7 @@ import { ControlsContainer } from "./containers/controlsContainer";
 import { ParticipantsGrid } from "./components/participantsGrid";
 
 import { useConnectionManager } from "./hooks/useConnectionManager";
+import { useWebRtc } from "./hooks/useWatchRtc";
 
 import { ConnectionManagerProvider } from "@core/connectionManager/contexts";
 
@@ -11,6 +12,7 @@ type RoomProps = { roomId: string };
 
 const Room = ({ roomId }: RoomProps) => {
   const { participants, onAction } = useConnectionManager(roomId);
+  useWebRtc(roomId);
 
   return (
     <ControlsContainer onAction={onAction}>
