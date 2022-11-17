@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "rm -rf .next && next dev",
-    "build": "rm -rf .next && next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "export": "next export"
+    "lint": "next lint"
   },
   "dependencies": {
     "@types/node": "18.11.9",
